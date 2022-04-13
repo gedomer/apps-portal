@@ -1,7 +1,6 @@
-from django.conf import settings
-from django.shortcuts import get_object_or_404
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView as BaseAPIView
 
@@ -11,7 +10,11 @@ class Endpoint(BaseAPIView):
     authentication_classes = (TokenAuthentication,)
 
 
-class AppListAPIView(Endpoint):
+class LoginAPIView(ObtainAuthToken):
+    pass
+
+
+class AppListEndpoint(Endpoint):
 
     def get(self, request):
         return Response({"detail": "Basarili"})

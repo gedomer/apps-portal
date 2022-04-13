@@ -1,9 +1,10 @@
 from django.urls import path, include
 
-from api.endpoints import AppListAPIView
+from api.endpoints import AppListEndpoint, LoginAPIView
 
 api_urls = [
-    path('app-list/', AppListAPIView.as_view()),
+    path("app-list/", AppListEndpoint.as_view()),
+    path("login/", LoginAPIView.as_view()),
 ]
 
 urlpatterns = [
