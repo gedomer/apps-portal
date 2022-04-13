@@ -1,20 +1,25 @@
-import { LOGIN, LOGOUT } from "./actions";
+import { combineReducers } from 'redux';
+import { LOGIN, LOGOUT, AUTH_ERROR } from "./actions";
 
-export default (
-  state = {
-    isAuthUser: !!localStorage.getItem("user"),
-    user: JSON.parse(localStorage.getItem("user")) || {}
-  },
-  action
-) => {
+const initialState = {
+  isAuthUser: !!localStorage.getItem("token"),
+  token: localStorage.getItem("token"),
+  hasError: false
+}
+
+function auth(state = initialState, action){
   switch (action.type) {
     case LOGIN:
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
-      return { ...state, isAuthUser: true, user: action.payload.user };
+      localStorage.setItem("token", JSON.stringify(action.payload.token));
+      return { ...state, isAuthUser: true, token:action.payload.token, hasError:false };
+    case AUTH_ERROR:
+      return { ...state, isAuthUser: false, hasError:true };
     case LOGOUT:
-      localStorage.removeItem("user");
-      return { ...state, isAuthUser: false, user: {} };
+      localStorage.removeItem("token");
+      return { ...state, isAuthUser: false, hasError:false };
     default:
       return state;
   }
 };
+
+export default combineReducers({auth});
