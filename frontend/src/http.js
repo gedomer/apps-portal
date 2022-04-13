@@ -10,9 +10,10 @@ axios.interceptors.response.use(response => response, error => {
 class HTTP {
   API_URL;
   TOKEN;
+  BASE_URL = "http://localhost:8000"
 
   constructor() {
-    this.API_URL = "http://localhost:8000/api";
+    this.API_URL = `${this.BASE_URL}/api`;
     this.TOKEN = null;
   }
 
@@ -25,7 +26,7 @@ class HTTP {
   }
 
   Convert(file) {
-    return this.request('POST', '/convert/', { file });
+    return this.request('POST', '/convert/', { file }, {'Content-Type': 'multipart/form-data'});
   }
 
   GetAppsList(){
@@ -36,10 +37,11 @@ class HTTP {
     return this.request('GET', `/app-list/${appId}/`);
   }
 
-  request(method, endpoint, data) {
-    const headers = {
+  request(method, endpoint, data, extraHeaders={}) {
+    let headers = {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...extraHeaders
     };
 
     if (this.TOKEN !== null) {
