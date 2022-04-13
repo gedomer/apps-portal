@@ -1,5 +1,16 @@
-FROM node:16.13-alpine
+# Use an official node runtime as a parent image
+FROM node:14-alpine
+
 WORKDIR /frontend
-COPY . .
+
+# Install dependencies
+COPY package*.json /frontend/
 RUN npm install
-RUN npm run build
+
+# Add the rest of the client code
+COPY . .
+
+# Make port 3000 available for the app
+EXPOSE 3000
+
+CMD ["npm", "start"]

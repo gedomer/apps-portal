@@ -31,22 +31,19 @@ services:
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - DEBUG=${DEBUG}
   frontend:
-    build:
-      context: ./frontend
+    build: ./frontend
     volumes:
-      - react_build:/frontend/build
-  nginx:
-    image: nginx:latest
+      - ./frontend:/frontend
+      - /frontend/node_modules
     ports:
-      - 80:8080
-    volumes:
-      - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
-      - react_build:/var/www/react
-      - django_build:/var/www/django
-      - django_media:/var/www/django_media
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
     depends_on:
       - backend
-      - frontend
+    command: npm start
+
+
 
 volumes:
   django_build:
