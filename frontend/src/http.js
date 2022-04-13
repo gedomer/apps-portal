@@ -29,7 +29,7 @@ class HTTP {
   }
 
   GetAppsList(){
-    return this.request('GET', '/apps-list/');
+    return this.request('GET', '/app-list/');
   }
 
   GetAppDetail(appId) {

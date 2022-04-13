@@ -10,7 +10,6 @@ const initialState = {
 function auth(state = initialState, action){
   switch (action.type) {
     case LOGIN:
-      localStorage.setItem("token", JSON.stringify(action.payload.token));
       return { ...state, isAuthUser: true, token:action.payload.token, hasError:false };
     case AUTH_ERROR:
       return { ...state, isAuthUser: false, hasError:true };
