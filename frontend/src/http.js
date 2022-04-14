@@ -26,7 +26,7 @@ class HTTP {
   }
 
   Convert(file) {
-    return this.request('POST', '/convert/', { file }, {'Content-Type': 'multipart/form-data'});
+    return this.request('POST', '/convert/', file , {'Content-Type': 'multipart/form-data'});
   }
 
   GetAppsList(){

@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.urls import path, include
 
-from api.endpoints import AppDetailEndpoint, AppListEndpoint, LoginAPIView
+from api.endpoints import AppDetailEndpoint, AppListEndpoint, LoginEndpoint, ImageConvertEndpoint
 
 api_urls = [
     path("app-list/", AppListEndpoint.as_view()),
     path("app-list/<int:pk>/", AppDetailEndpoint.as_view()),
-    path("login/", LoginAPIView.as_view()),
+    path("convert/", ImageConvertEndpoint.as_view()),
+    path("login/", LoginEndpoint.as_view()),
 ]
 
 urlpatterns = [

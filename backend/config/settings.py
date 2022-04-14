@@ -160,7 +160,16 @@ STATIC_URL = '/staticfiles/'
 STATIC_ROOT = BASE_DIR / "static"
 
 
+# Media settings
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# max upload size
+MAX_FILE_SIZE_IN_BYTE = 10485760
