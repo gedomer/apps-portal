@@ -8,6 +8,16 @@ import { logoutUser } from "../actions"
 
 const theme = createTheme();
 
+const LayoutButton = (props) => (
+  <Button
+    sx={{'bgcolor': window.location.pathname == props.path && '#ebebeb'}}
+    color="inherit"
+    onClick={props.onClick}
+  >
+    {props.text}
+  </Button>
+)
+
 const Layout = ({children, isAuthUser, logoutUser}) => {
   const navigate = useNavigate();
 
@@ -29,9 +39,9 @@ const Layout = ({children, isAuthUser, logoutUser}) => {
           </Typography>
           {isAuthUser && (
             <React.Fragment>
-              <Button color="inherit" onClick={() => navigate("/")}>Randomize Apps</Button>
-              <Button color="inherit" onClick={() => navigate("/convert")}>Convert</Button>
-              <Button color="inherit" onClick={() => logoutUser()}>Logout</Button>
+              <LayoutButton path="/" onClick={() => navigate("/")} text={"Randomize Apps"} />
+              <LayoutButton path="/convert" onClick={() => navigate("/convert")} text={"Convert"} />
+              <LayoutButton onClick={() => logoutUser()} text={"Logout"} />
             </React.Fragment>
           )}
         </Toolbar>
