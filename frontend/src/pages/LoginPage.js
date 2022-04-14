@@ -27,6 +27,10 @@ function LoginPage(props) {
     props.loginUser(values.username, values.password);
   };
 
+  React.useEffect(() => {
+    document.title = "Apps Portal | Login";
+  });
+
   const formik = useFormik({
     initialValues,
     onSubmit,

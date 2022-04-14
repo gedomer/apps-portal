@@ -12,6 +12,10 @@ function HomePage(props) {
     selectedApp2: null,
   })
 
+  React.useEffect(() => {
+    document.title = "Apps Portal | Home Page";
+  });
+
   const getAppList = () => {
     http.GetAppsList()
       .then((res) => {

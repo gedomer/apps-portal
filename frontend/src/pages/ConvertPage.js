@@ -10,6 +10,10 @@ function ConvertPage(props) {
     isError: false
   })
 
+  React.useEffect(() => {
+    document.title = "Apps Portal | Webp Convert";
+  });
+
   const selectFile = (event) => {
     setState({ ...state, selectedFile: event.target.files[0]});
   }
