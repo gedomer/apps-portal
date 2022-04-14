@@ -24,8 +24,8 @@ export const loginUser = (username, password) => (dispatch) => {
     });
 }
 
-export const logout = () => {
-  return {
+export const logoutUser = () => {
+  return (dispatch) => dispatch({
     type: LOGOUT
-  };
+  });
 };

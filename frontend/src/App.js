@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { ConvertPage, HomePage, LoginPage, NotFound } from "./pages";
 import store from "./store";
 import { fetchToken } from "./actions";
+import Layout from "./layouts/Layout"
 
 
 function App() {
@@ -14,12 +15,14 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<PrivateComponent Component={<HomePage/>} />} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/convert" element={<PrivateComponent Component={<ConvertPage/>} />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<PrivateComponent Component={<HomePage/>} />} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/convert" element={<PrivateComponent Component={<ConvertPage/>} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </Provider>
   );

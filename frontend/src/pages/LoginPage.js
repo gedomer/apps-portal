@@ -1,7 +1,7 @@
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { connect } from "react-redux"
 import Button from "@mui/material/Button";
 import Alert from '@mui/material/Alert';
@@ -10,10 +10,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { loginUser } from "../actions";
-
-const theme = createTheme();
 
 const initialValues = {
   username: "",
@@ -26,10 +23,8 @@ const validationSchema = yup.object({
 });
 
 function LoginPage(props) {
-  const navigate = useNavigate();
   const onSubmit = (values) => {
     props.loginUser(values.username, values.password);
-    navigate("/");
   };
 
   const formik = useFormik({
@@ -43,8 +38,7 @@ function LoginPage(props) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -96,7 +90,6 @@ function LoginPage(props) {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
 
