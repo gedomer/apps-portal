@@ -1,0 +1,18 @@
+[{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$ZgVkmOCHr8J4sxYdrNo1gu$aIkgEbZU8OJceRh5eT9lcV7KEySl3xe55sN1yfnjV+E=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "appz",
+        "first_name": "",
+        "last_name": "",
+        "email": "appz@appz.appz",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-04-14T10:07:39.695Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}]
